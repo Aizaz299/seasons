@@ -19,20 +19,26 @@ class App extends React.Component
     constructor(props){  //gonna be called anytime instance of this class is created.
         super(props); //making sure React.component constructor gets called.
        //this is the only time we do direct assignment to state this.state!!
-        this.state={lat:null};
+        this.state={lat:null, errorMessage:''};
 
         window.navigator.geolocation.getCurrentPosition(
             position=>{
 
                 this.setState({lat:position.coords.latitude});
             },
-            (err)=>console.log(err)
+            err=>{
+                this.setState({errorMessage:err.message})
+            }
             );
     }
     render()
     {
          
-        return <div> {this.state.lat}</div>;
+        return (
+        <div> latitude:{this.state.lat} <br/> <br/>
+        Error:{this.state.errorMessage}
+        </div>
+        );
     }
 
 };
