@@ -1,14 +1,13 @@
 import React from 'react';
 
 
+//we pass prop it is gonna show as a functional 
+const SeasonsDisplay = (props)=>{
+console.log(props.lati);
 
-const SeasonsDisplay = ()=>{
-<div></div>
+return <div>Seasons Display</div>
 };
-
-
-export default SeasonsDisplay() 
-
+export default SeasonsDisplay;
 
 
 

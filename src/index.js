@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonsDisplay'
 
 //functional base component
 //const App = ()=>{
@@ -29,13 +30,8 @@ class App extends React.Component
 
     componentDidMount(){  //good for one time setup.
         window.navigator.geolocation.getCurrentPosition(
-            position=>{
-
-                this.setState({lat:position.coords.latitude});
-            },
-            err=>{
-                this.setState({errorMessage:err.message})
-            }
+            position=>this.setState({lati:position.coords.latitude}),
+            err=>this.setState({errorMessage:err.message})
             );
 
 
@@ -46,13 +42,17 @@ class App extends React.Component
     
     render()
     {
-         if (this.state.errorMessage && !this.state.lat) {
+         if (this.state.errorMessage && !this.state.lati) {
 
              return <div> Error:{this.state.errorMessage} </div>
          }
 
-         if (!this.state.errorMessage && this.state.lat) {
-             return <div>latitude:{this.state.lat}</div>      
+         if (!this.state.errorMessage && this.state.lati) {
+             //we took state and pass it as a prop to SeasonsDisplay
+             // when state is updated that will update SeasonsDisplay
+             // as well. means in addition component will re-render 
+             // any children like SeasonsDisplay.
+             return <div><SeasonDisplay lati={this.state.lati}/></div>      
          }
          return <div>Loading...</div>
     }
