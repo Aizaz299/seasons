@@ -16,11 +16,18 @@ import ReactDOM from 'react-dom';
 class App extends React.Component
 {   //react says we have to define render!!!
 
-    constructor(props){  //gonna be called anytime instance of this class is created.
-        super(props); //making sure React.component constructor gets called.
+ //   constructor(props)
+  //  {  //gonna be called anytime instance of this class is created.
+  //      super(props); //making sure React.component constructor gets called.
        //this is the only time we do direct assignment to state this.state!!
-        this.state={lat:null, errorMessage:''};
+  //      this.state={lat:null, errorMessage:''
+   // };
+        // setting states in this API
+ //} 
+    //Above constructor does the same thing as this single line below.
+    state ={lati:null, errMessage:''};
 
+    componentDidMount(){  //good for one time setup.
         window.navigator.geolocation.getCurrentPosition(
             position=>{
 
@@ -30,7 +37,13 @@ class App extends React.Component
                 this.setState({errorMessage:err.message})
             }
             );
+
+
+        console.log("Rendred");
     }
+
+
+    
     render()
     {
          if (this.state.errorMessage && !this.state.lat) {
