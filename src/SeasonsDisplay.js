@@ -26,9 +26,9 @@ const SeasonDisplay = props => {
     //  console.log(season);
    const {text,iconName}= seasonConfig[season]  //text and icon name 
   return( <div>
-      <i className={`${iconName} icon`}/>
+      <i className={`massive ${iconName} icon`}/>
       <h1>{text}</h1>
-      <i className={`${iconName} icon`}/>
+      <i className={`massive${iconName} icon`}/>
       </div>
   )
 };
