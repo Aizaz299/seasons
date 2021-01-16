@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonsDisplay'
+import Spinner from './Spinner'
 
 //functional base component
 //const App = ()=>{
@@ -54,7 +55,7 @@ class App extends React.Component
              // any children like SeasonsDisplay.
              return <div><SeasonDisplay lati={this.state.lati}/></div>      
          }
-         return <div>Loading...</div>
+         return <Spinner message="Please, accept location request."/>;
     }
 
 };
